@@ -2,7 +2,11 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.myapp">
 
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+
     <application
+        android:name=".App"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -16,7 +20,41 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".AnotherAty"></activity>
+        <activity android:name=".AnotherAty">
+            <intent-filter>
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <action android:name="com.example.myapp.intent.action.AnotherAty" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".MyAty" />
+
+        <service
+            android:name=".testService"
+            android:enabled="true"
+            android:exported="true" />
+
+        <receiver
+            android:name=".MyReceiver1"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <action android:name="com.example.myapp.intent.action.MyReceiver" />
+            </intent-filter>
+        </receiver>
+        <receiver
+            android:name=".MyReceiver2"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <action android:name="com.example.myapp.intent.action.MyReceiver" />
+            </intent-filter>
+        </receiver>
+
     </application>
 
 </manifest>

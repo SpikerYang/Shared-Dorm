@@ -12,4 +12,72 @@
         android:id="@+id/result"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
+    <Button
+        android:id="@+id/btnStartService"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="start service" />
+    <Button
+        android:id="@+id/btnStopService"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="stop service" />
+
+    <Button
+        android:id="@+id/btnBindService"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="bind service" />
+
+    <Button
+        android:id="@+id/btnUnbindService"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="unbind service" />
+
+    <Button
+        android:id="@+id/btnSyncData"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Sync Data" />
+
+    <Button
+        android:id="@+id/btnSearchBt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Search Bluetooth" />
+
+    <Button
+        android:id="@+id/btnSendMsg"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Send msg" />
+
+    <Button
+        android:id="@+id/btnRegister"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="register" />
+
+    <Button
+        android:id="@+id/btnUnregister"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="unregister" />
+
+    <EditText
+        android:id="@+id/editText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="0"/>
+    <TextView
+        android:id="@+id/tvOut"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:id="@+id/tvDevices"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 </LinearLayout>
