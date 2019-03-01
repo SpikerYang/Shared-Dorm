@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".atyLogin"
+    android:paddingLeft="30dp"
+    android:paddingRight="30dp"
+    android:background="@color/background">
+
+    <TextView
+        android:id="@+id/tvResTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="80dp"
+        android:text="Registration"
+        android:gravity="center"
+        android:textColor="@color/white"
+        android:textSize="25dp" />
+
+
+
+    <TextView
+        android:id="@+id/tvResUsername"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="80dp"
+        android:text=" Username"
+        android:textColor="@color/white"
+        android:textSize="17dp" />
+
+    <EditText
+        android:id="@+id/etResUsername"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="" />
+
+    <TextView
+        android:id="@+id/tvResPassword"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:textColor="@color/white"
+        android:textSize="17dp"
+        android:text=" Password" />
+
+    <EditText
+        android:id="@+id/etResPassword"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text=""
+        android:textColor="@color/white" />
+
+    <TextView
+        android:id="@+id/tvRePassword"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:textColor="@color/white"
+        android:textSize="17dp"
+        android:text=" Enter password again" />
+
+    <EditText
+        android:id="@+id/etRePassword"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:layout_marginBottom="30dp"
+        android:text=""
+        android:textColor="@color/white" />
+    <Button
+        android:id="@+id/btnResRegister"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/btnGreen"
+        android:layout_marginBottom="60dp"
+        android:text="Register"
+        android:textColor="@color/white" />
+
+
+
+</LinearLayout>

@@ -6,55 +6,21 @@
     <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
 
     <application
-        android:name=".App"
+        android:name=".appUser"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+        <activity android:name=".atyLogin">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".AnotherAty">
-            <intent-filter>
-                <category android:name="android.intent.category.DEFAULT" />
-
-                <action android:name="com.example.myapp.intent.action.AnotherAty" />
-            </intent-filter>
-        </activity>
-        <activity android:name=".MyAty" />
-
-        <service
-            android:name=".testService"
-            android:enabled="true"
-            android:exported="true" />
-
-        <receiver
-            android:name=".MyReceiver1"
-            android:enabled="true"
-            android:exported="true">
-            <intent-filter>
-                <category android:name="android.intent.category.DEFAULT" />
-
-                <action android:name="com.example.myapp.intent.action.MyReceiver" />
-            </intent-filter>
-        </receiver>
-        <receiver
-            android:name=".MyReceiver2"
-            android:enabled="true"
-            android:exported="true">
-            <intent-filter>
-                <category android:name="android.intent.category.DEFAULT" />
-
-                <action android:name="com.example.myapp.intent.action.MyReceiver" />
-            </intent-filter>
-        </receiver>
-
+        <activity android:name=".atyRegister"></activity>
     </application>
 
 </manifest>

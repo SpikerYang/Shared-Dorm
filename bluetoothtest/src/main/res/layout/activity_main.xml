@@ -23,4 +23,12 @@
         tools:layout_editor_absoluteX="45dp"
         tools:layout_editor_absoluteY="30dp" />
 
+    <Button
+        android:id="@+id/btnHttpGet"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="httpGet"
+        tools:layout_editor_absoluteX="45dp"
+        tools:layout_editor_absoluteY="126dp" />
+
 </android.support.constraint.ConstraintLayout>
