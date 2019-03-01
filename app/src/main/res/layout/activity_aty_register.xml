@@ -11,22 +11,10 @@
     android:background="@color/background">
 
     <TextView
-        android:id="@+id/tvResTitle"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="80dp"
-        android:text="Registration"
-        android:gravity="center"
-        android:textColor="@color/white"
-        android:textSize="25dp" />
-
-
-
-    <TextView
         android:id="@+id/tvResUsername"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="80dp"
+        android:layout_marginTop="40dp"
         android:text=" Username"
         android:textColor="@color/white"
         android:textSize="17dp" />
@@ -37,6 +25,61 @@
         android:layout_height="56dp"
         android:ems="10"
         android:inputType="textPersonName"
+        android:textColor="@color/white"
+        android:text="" />
+
+    <TextView
+        android:id="@+id/tvResId"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:text=" StdId"
+        android:textColor="@color/white"
+        android:textSize="17dp" />
+
+    <EditText
+        android:id="@+id/etResId"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:textColor="@color/white"
+        android:text="" />
+
+    <TextView
+        android:id="@+id/tvEmail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:text=" Email"
+        android:textColor="@color/white"
+        android:textSize="17dp" />
+
+    <EditText
+        android:id="@+id/etResEmail"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:textColor="@color/white"
+        android:text="" />
+
+    <TextView
+        android:id="@+id/tvResPhone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:text=" Phone"
+        android:textColor="@color/white"
+        android:textSize="17dp" />
+
+    <EditText
+        android:id="@+id/etResPhone"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:textColor="@color/white"
         android:text="" />
 
     <TextView
@@ -44,6 +87,7 @@
         android:layout_width="match_parent"
         android:layout_height="30dp"
         android:textColor="@color/white"
+        android:layout_marginTop="5dp"
         android:textSize="17dp"
         android:text=" Password" />
 
@@ -61,6 +105,7 @@
         android:layout_width="match_parent"
         android:layout_height="30dp"
         android:textColor="@color/white"
+        android:layout_marginTop="5dp"
         android:textSize="17dp"
         android:text=" Enter password again" />
 

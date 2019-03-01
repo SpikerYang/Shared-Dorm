@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">SharedRoomAdministration</string>
+    <string name="login">/php/user/Login.php</string>
+    <string name="register">/php/user/Register.php</string>
 </resources>

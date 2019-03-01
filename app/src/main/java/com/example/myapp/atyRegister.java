@@ -8,19 +8,30 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.google.gson.Gson;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.IOException;
 
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.FormBody;
+import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
+import okhttp3.RequestBody;
 import okhttp3.Response;
 
 public class atyRegister extends AppCompatActivity {
     private EditText etResUserrname;
+    private EditText etResEmail;
+    private EditText etResId;
+    private EditText etResPhone;
     private EditText etResPassword;
     private EditText etRePassword;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,6 +39,9 @@ public class atyRegister extends AppCompatActivity {
         etResUserrname = findViewById(R.id.etResUsername); // Initiate
         etResPassword = findViewById(R.id.etResPassword);
         etRePassword = findViewById(R.id.etRePassword);
+        etResEmail = findViewById(R.id.etResEmail);
+        etResId = findViewById(R.id.etResId);
+        etResPhone = findViewById(R.id.etResPhone);
 
         findViewById(R.id.btnResRegister).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -35,6 +49,10 @@ public class atyRegister extends AppCompatActivity {
                 String username = etResUserrname.getText().toString();
                 String password = etResPassword.getText().toString();
                 String repassword = etRePassword.getText().toString();
+                String email = etResEmail.getText().toString();
+                String id = etResId.getText().toString();
+                String phone = etResPhone.getText().toString();
+
                 if (!password.equals(repassword)) {
                     Toast.makeText(atyRegister.this, "Passwords you typed in twice are different!", Toast.LENGTH_SHORT).show();
                 } else {
@@ -42,14 +60,24 @@ public class atyRegister extends AppCompatActivity {
                     // OKhttp register
                     appUser user = (appUser) getApplication();
                     OkHttpClient client = new OkHttpClient();
+                    Gson gson = new Gson();
+                    JSONObject jsonObject = new JSONObject();
+                    try {
+                        jsonObject.put("stdId",id);
+                        jsonObject.put("username",username);
+                        jsonObject.put("password",password);
+                        jsonObject.put("email",email);
+                        jsonObject.put("phone",phone);
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                    System.out.println(jsonObject.toString());
 
-                    FormBody formBody = new FormBody.Builder()
-                            .add("Username", username)
-                            .add("Password", password)
-                            .build();
-                    final Request request = new Request.Builder()
-                            .url(user.Server)
-                            .post(formBody)
+                    RequestBody requestBody = FormBody.create(MediaType.parse("application/json; charset=utf-8")
+                            , jsonObject.toString());
+                    Request request = new Request.Builder()
+                            .url(user.Server + "@string/register")
+                            .post(requestBody)
                             .build();
                     Call call = client.newCall(request);
                     call.enqueue(new Callback() {

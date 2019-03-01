@@ -3,7 +3,7 @@ package com.example.myapp;
 import android.app.Application;
 
 public class appUser extends Application {
-    static final String Server = "www.baidu.com";
+    static final String Server = "http://47.100.99.193:80/";
     private boolean isLogin = false;
     private String Username;
     private String Password;

@@ -54,7 +54,7 @@ public class atyLogin extends AppCompatActivity implements View.OnClickListener 
                 .add("Password", etPassword.getText().toString())
                 .build();
         final Request request = new Request.Builder()
-                .url(user.Server)
+                .url(user.Server + "@string/login")
                 .post(formBody)
                 .build();
         Call call = client.newCall(request);
