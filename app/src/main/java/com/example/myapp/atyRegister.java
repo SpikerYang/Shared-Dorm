@@ -25,7 +25,7 @@ import okhttp3.RequestBody;
 import okhttp3.Response;
 
 public class atyRegister extends AppCompatActivity {
-    private EditText etResUserrname;
+    private EditText etResUsername;
     private EditText etResEmail;
     private EditText etResId;
     private EditText etResPhone;
@@ -36,7 +36,7 @@ public class atyRegister extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_aty_register);
-        etResUserrname = findViewById(R.id.etResUsername); // Initiate
+        etResUsername = findViewById(R.id.etResUsername); // Initiate
         etResPassword = findViewById(R.id.etResPassword);
         etRePassword = findViewById(R.id.etRePassword);
         etResEmail = findViewById(R.id.etResEmail);
@@ -46,7 +46,7 @@ public class atyRegister extends AppCompatActivity {
         findViewById(R.id.btnResRegister).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String username = etResUserrname.getText().toString();
+                String username = etResUsername.getText().toString();
                 String password = etResPassword.getText().toString();
                 String repassword = etRePassword.getText().toString();
                 String email = etResEmail.getText().toString();
@@ -58,9 +58,9 @@ public class atyRegister extends AppCompatActivity {
                 } else {
                     System.out.println(username + ": "+ password + ": " + repassword);
                     // OKhttp register
-                    appUser user = (appUser) getApplication();
+                    final appUser app = (appUser) getApplication();
                     OkHttpClient client = new OkHttpClient();
-                    Gson gson = new Gson();
+
                     JSONObject jsonObject = new JSONObject();
                     try {
                         jsonObject.put("stdId",id);
@@ -76,19 +76,30 @@ public class atyRegister extends AppCompatActivity {
                     RequestBody requestBody = FormBody.create(MediaType.parse("application/json; charset=utf-8")
                             , jsonObject.toString());
                     Request request = new Request.Builder()
-                            .url(user.Server + "@string/register")
+                            .url(app.Server + getString(R.string.register))
                             .post(requestBody)
                             .build();
                     Call call = client.newCall(request);
                     call.enqueue(new Callback() {
                         @Override
                         public void onFailure(Call call, IOException e) {
-                            System.out.println("Connection failed");
+                            System.out.println("Register Connection failed");
                         }
 
                         @Override
                         public void onResponse(Call call, Response response) throws IOException {
-                            System.out.println(response.body().string());
+                            String strRes = response.body().string();
+                            System.out.println(strRes);
+                            try {
+                                JSONObject state = new JSONObject(strRes);
+                                if (state.get("result").equals("success")) {
+                                    Toast.makeText(atyRegister.this,"Registration success!",Toast.LENGTH_SHORT).show();
+                                } else {
+                                    Toast.makeText(atyRegister.this,"Registration failed!",Toast.LENGTH_SHORT).show();
+                                }
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
                         }
                     });
 
