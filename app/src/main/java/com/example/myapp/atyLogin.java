@@ -91,6 +91,7 @@ public class atyLogin extends AppCompatActivity implements View.OnClickListener 
                                 user.getString("stdId"),user.getString("email"),user.getString("phone"),state.getString("jwt"));
                         app.setUser(userLogin);
                         System.out.println(app.getUser().getEmail());
+                        startActivity(new Intent(atyLogin.this, atyAdmin.class));
                     } else {
                         Toast.makeText(atyLogin.this,"Login failed!",Toast.LENGTH_SHORT).show();
                     }

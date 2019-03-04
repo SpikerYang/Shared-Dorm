@@ -2,4 +2,12 @@
     <string name="app_name">SharedRoomAdministration</string>
     <string name="login">/php/user/Login.php</string>
     <string name="register">/php/user/Register.php</string>
+    <string-array name="menu">
+        <item>Admin</item>
+        <item>EditProperty</item>
+        <item>EditRequest</item>
+        <item>Check</item>
+        <item>EditUserRole</item>
+    </string-array>
+
 </resources>
