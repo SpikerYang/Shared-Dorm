@@ -26,15 +26,21 @@ import okhttp3.Response;
 public class atyLogin extends AppCompatActivity implements View.OnClickListener {
     private EditText etUsername;
     private EditText etPassword;
+    private appUser app;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         this.setContentView(R.layout.activity_aty_login);
-        etUsername = findViewById(R.id.etUsername);
-        etPassword = findViewById(R.id.etPassword);
+        app = (appUser) getApplication();
+        if (app.isLogin()) {
+            startActivity(new Intent(atyLogin.this, atyAdmin.class));
+        } else {
+            etUsername = findViewById(R.id.etUsername);
+            etPassword = findViewById(R.id.etPassword);
 
-        findViewById(R.id.btnSignIn).setOnClickListener(this);
-        findViewById(R.id.btnRegister).setOnClickListener(this);
+            findViewById(R.id.btnSignIn).setOnClickListener(this);
+            findViewById(R.id.btnRegister).setOnClickListener(this);
+        }
     }
 
     @Override
@@ -52,7 +58,6 @@ public class atyLogin extends AppCompatActivity implements View.OnClickListener 
     }
 
     public void signIn() {
-        final appUser app = (appUser) getApplication();
         OkHttpClient client = new OkHttpClient();
 
         JSONObject jsonObject = new JSONObject();
@@ -92,6 +97,7 @@ public class atyLogin extends AppCompatActivity implements View.OnClickListener 
                         app.setUser(userLogin);
                         System.out.println(app.getUser().getEmail());
                         startActivity(new Intent(atyLogin.this, atyAdmin.class));
+                        finish();
                     } else {
                         Toast.makeText(atyLogin.this,"Login failed!",Toast.LENGTH_SHORT).show();
                     }

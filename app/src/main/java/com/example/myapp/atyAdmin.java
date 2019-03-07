@@ -41,6 +41,8 @@ public class atyAdmin extends AppCompatActivity {
             case 0: fragment = new fragAdmin(); break;
             case 1: fragment = new fragEditProperty(); break;
             case 2: fragment = new fragEditRequest(); break;
+            case 3: fragment = new fragCheck(); break;
+            case 4: fragment = new fragEditUserRole(); break;
         }
         transaction.replace(R.id.content_frame, fragment).commit();
         mDrawerList.setItemChecked(position,true);

@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragCheck"
+    android:background="@color/background">
+
+    <!-- TODO: Update blank fragment layout -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:textSize="20dp"
+            android:textColor="@color/white"
+            android:text="Position: "
+            android:layout_marginTop="10dp"/>
+        <EditText
+            android:id="@+id/etCheckPos"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"/>
+        <Button
+            android:id="@+id/btnCheckLog"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginBottom="5dp"
+            android:background="@color/btnGreen"
+            android:textColor="@color/white"
+            android:textSize="20dp"
+            android:text="Log"/>
+        <Button
+            android:id="@+id/btnCheckProperties"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginBottom="5dp"
+            android:background="@color/btnGreen"
+            android:textColor="@color/white"
+            android:textSize="20dp"
+            android:text="Properties"/>
+        <Button
+            android:id="@+id/btnCheckRequests"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginBottom="5dp"
+            android:background="@color/btnGreen"
+            android:textColor="@color/white"
+            android:textSize="20dp"
+            android:text="Requests"/>
+        <Button
+            android:id="@+id/btnCheckUsers"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginBottom="5dp"
+            android:background="@color/btnGreen"
+            android:textColor="@color/white"
+            android:textSize="20dp"
+            android:text="Users"/>
+        <Button
+            android:id="@+id/btnCheckRooms"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginBottom="5dp"
+            android:background="@color/btnGreen"
+            android:textColor="@color/white"
+            android:textSize="20dp"
+            android:text="Rooms"/>
+
+        <ListView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"></ListView>
+    </LinearLayout>
+</FrameLayout>
