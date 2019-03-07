@@ -3,6 +3,10 @@
     <string name="login">/php/user/Login.php</string>
     <string name="register">/php/user/Register.php</string>
     <string name="checkLog">/php/admin/Log.php</string>
+    <string name="checkProperties">/php/admin/Properties.php</string>
+    <string name="checkRequests">/php/admin/Requests.php</string>
+    <string name="checkUsers">/php/admin/Users.php</string>
+    <string name="checkRooms">/php/admin/Rooms.php</string>
     <string-array name="menu">
         <item>Admin</item>
         <item>EditProperty</item>
