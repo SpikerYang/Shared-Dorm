@@ -27,7 +27,7 @@ import java.util.List;
 import java.util.Set;
 import java.util.UUID;
 
-public class BTsearch extends AppCompatActivity implements View.OnClickListener, AdapterView.OnItemClickListener {
+public class BlueTooth extends AppCompatActivity implements View.OnClickListener, AdapterView.OnItemClickListener {
     private TextView tvDevice;
     private ListView lvDevices;
     private BluetoothAdapter mBluetoothAdapter;
@@ -35,18 +35,15 @@ public class BTsearch extends AppCompatActivity implements View.OnClickListener,
     private ArrayAdapter<String> arrayAdapter;
 
     private final UUID MY_UUID = UUID.randomUUID();
-    private final String NAME = "Mydevice";
 
     private BluetoothSocket clientSocket;
     private BluetoothDevice device;
-    private AcceptThread acceptThread;
     private OutputStream os;  // client OutputStream
-    private InputStream is;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_btsearch);
+        setContentView(R.layout.activity_blue_tooth);
         mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter(); //create a adapter
         tvDevice = findViewById(R.id.tvDevices);
 
@@ -54,7 +51,7 @@ public class BTsearch extends AppCompatActivity implements View.OnClickListener,
         Set<BluetoothDevice> pairedDevices = mBluetoothAdapter.getBondedDevices();
         if (pairedDevices.size() > 0) {
             for(BluetoothDevice device:pairedDevices) {
-                bluetoothDevices.add(device.getName() + ":" + device.getAddress() + "\n");
+                bluetoothDevices.add(device.getName() + ":" + device.getAddress());
 
             }
         }
@@ -67,9 +64,7 @@ public class BTsearch extends AppCompatActivity implements View.OnClickListener,
         this.registerReceiver(mReceiver, filter);
         filter = new IntentFilter(BluetoothAdapter.ACTION_DISCOVERY_FINISHED);
         this.registerReceiver(mReceiver, filter);
-        findViewById(R.id.btnStartDiscovery).setOnClickListener(this);
-        acceptThread = new AcceptThread();
-        acceptThread.start();
+        findViewById(R.id.btnSearch).setOnClickListener(this);
     }
 
     @Override
@@ -84,7 +79,7 @@ public class BTsearch extends AppCompatActivity implements View.OnClickListener,
             if (BluetoothDevice.ACTION_FOUND.equals(intent.getAction())) {
                 BluetoothDevice device = intent.getParcelableExtra(BluetoothDevice.EXTRA_DEVICE);
                 if (device.getBondState() != BluetoothDevice.BOND_BONDED) {
-                    bluetoothDevices.add(device.getName() + ":" + device.getAddress() + "/n");
+                    bluetoothDevices.add(device.getName() + ":" + device.getAddress());
                     arrayAdapter.notifyDataSetChanged();
                 }
             } else if (BluetoothAdapter.ACTION_DISCOVERY_FINISHED.equals(intent.getAction())) {
@@ -97,7 +92,7 @@ public class BTsearch extends AppCompatActivity implements View.OnClickListener,
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.btnStartDiscovery:
+            case R.id.btnSearch:
                 setProgressBarIndeterminateVisibility(true);
                 setTitle("scanning...");
                 if (mBluetoothAdapter.isDiscovering()) {
@@ -126,57 +121,16 @@ public class BTsearch extends AppCompatActivity implements View.OnClickListener,
                     clientSocket.connect();                                           // make connection if device and server had been bonded 发起连接请求
 
 //                    is = clientSocket.getInputStream();
-                    os = clientSocket.getOutputStream();                              //获得输出流 客户端向服务端发送数据
-                    /* Handler & msg */
-
-
+                    os = clientSocket.getOutputStream();                              //获得输出流 通过os发送数据到服务端
                 }
             } catch (Exception e) {
                 e.printStackTrace();
             }
             if (os != null) {
-                os.write("msg go !".getBytes("utf-8"));                   // send msg
+                os.write("msg go !".getBytes("utf-8"));                  // send msg
             }
         } catch (Exception e) {
             e.printStackTrace();
-        }
-    }
-
-    private Handler handler = new Handler() {
-        public void handleMessage(Message msg) {
-            Toast.makeText(BTsearch.this, String.valueOf(msg.obj), Toast.LENGTH_LONG).show();
-            super.handleMessage(msg);
-        }
-    };
-    private class AcceptThread extends Thread {
-        private BluetoothServerSocket serverSocket;
-        private BluetoothSocket socket;
-        private InputStream is;
-        private OutputStream os;
-        public AcceptThread() {
-            try {
-                serverSocket = mBluetoothAdapter.listenUsingRfcommWithServiceRecord(NAME,MY_UUID);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-
-        @Override
-        public void run() {
-            try {
-                socket = serverSocket.accept();
-                is = socket.getInputStream();
-                os = socket.getOutputStream();
-                while (true) {
-                    byte[] buffer = new byte[128];
-                    int count = is.read(buffer);
-                    Message msg = new Message();
-                    msg.obj = new String(buffer, 0, count, "utf-8");
-                    handler.sendMessage(msg);
-                }
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
         }
     }
 }

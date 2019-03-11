@@ -20,12 +20,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".BTsearch" />
-
-        <receiver
-            android:name=".MyReceiver"
-            android:enabled="true"
-            android:exported="true" />
-
+        <activity android:name=".BlueTooth"></activity>
     </application>
 
 </manifest>

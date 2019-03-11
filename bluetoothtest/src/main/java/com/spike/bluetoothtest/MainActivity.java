@@ -24,44 +24,9 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.btnBlueTooth).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this, BTsearch.class));
+                startActivity(new Intent(MainActivity.this, BlueTooth.class));
             }
         });
-        //httpGet
-        findViewById(R.id.btnHttpGet).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                new AsyncTask<String, Void, Void>() {
-                    @Override
-                    protected Void doInBackground(String... strings) {
-                        try {
-                            URL url = new URL(strings[0]);
-                            try {
-                                URLConnection connection = url.openConnection();
-                                InputStream is = connection.getInputStream();
-                                InputStreamReader isr = new InputStreamReader(is,"utf-8");
-                                BufferedReader br = new BufferedReader(isr);
-                                String line;
-                                while ((line = br.readLine()) != null) {
-                                    System.out.println(line);
-                                }
-                                br.close();
-                                isr.close();
-                                is.close();
-                            } catch (IOException e) {
-                                e.printStackTrace();
-                            }
-                        } catch (MalformedURLException e) {
-                            e.printStackTrace();
-                        }
-                        return null;
-                    }
-                }.execute("http://openapi.youdao.com/api");
-            }
-        });
-        //httpClientGet
-
-
     }
 
 }
