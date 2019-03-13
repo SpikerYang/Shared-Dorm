@@ -39,6 +39,7 @@ public class BlueTooth extends AppCompatActivity implements View.OnClickListener
     private BluetoothSocket clientSocket;
     private BluetoothDevice device;
     private OutputStream os;  // client OutputStream
+    private InputStream is;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -122,6 +123,7 @@ public class BlueTooth extends AppCompatActivity implements View.OnClickListener
 
 //                    is = clientSocket.getInputStream();
                     os = clientSocket.getOutputStream();                              //获得输出流 通过os发送数据到服务端
+                    is = clientSocket.getInputStream();
                 }
             } catch (Exception e) {
                 e.printStackTrace();
